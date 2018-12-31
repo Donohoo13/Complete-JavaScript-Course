@@ -192,3 +192,152 @@ switch(true) {
     default:
     console.log(firstName + ' is a man.')
 }
+
+console.log("-------------Coding Challenge 2--------------")
+
+/*****************************
+* CODING CHALLENGE 2
+*/
+
+/*
+John and Mike both play basketball in different teams. In the latest 3 games, John's team scored 89,
+120 and 103 points, while Mike's team scored 116, 94 and 123 points.
+
+1. Calculate the average score for each team
+2. Decide which teams wins in average (highest average score), and print the winner to the console.
+Also include the average score in the output.
+3. Then change the scores to show different winners.
+Don't forget to take into account there might be a draw (the same average score)
+
+4. EXTRA: Mary also plays basketball, and her team scored 97, 134 and 105 points. Like before,
+log the average winner to the console. HINT: you will need the && operator to take the decision.
+If you can't solve this one, just watch the solution, it's no problem :)
+5. Like before, change the scores to generate different winners, keeping in mind there might be draws.
+
+GOOD LUCK 😀
+*/
+
+let mikesTotals = [116, 94, 123];
+let johnsTotals = [89, 120, 103];
+let marysTotals = [97, 134, 105];
+
+let getAverage = (arr) => {
+    let total = 0;
+    for (let i = 0; i < arr.length; i++){
+        total += arr[i];
+    }
+    return total / arr.length;
+}
+
+const mikesAverage = getAverage(mikesTotals);
+const johnsAverage = getAverage(johnsTotals);
+const marysAverage = getAverage(marysTotals);
+console.log('Mike\'s Average:', mikesAverage, 'John\'s Average:', johnsAverage,
+'Mary\'s Average:', marysAverage);
+
+if (mikesAverage > johnsAverage && mikesAverage > marysAverage){
+    console.log(`Mike's team with an average of ${mikesAverage} points per game is better than
+    John's, and Mary's team at ${johnsAverage}, and ${marysAverage} points per game.`)
+} else if (johnsAverage > mikesAverage && johnsAverage > marysAverage){
+    console.log(`John's team with an average of ${johnsAverage} points per game is better than
+    Mike's, and Mary's team at ${mikesAverage}, and ${marysAverage} points per game.`)
+}else if (marysAverage > johnsAverage && marysAverage > mikesAverage){
+    console.log(`Mary's team with an average of ${marysAverage} points per game is better than
+    Mike's, and John's team at ${mikesAverage}, and ${johnsAverage} points per game.`)
+}else {
+    console.log('There is a draw in averages.', 'Mike\'s Average:', mikesAverage,
+    'John\'s Average:', johnsAverage, 'Mary\'s Average:', marysAverage)
+}
+
+
+console.log("-------------Functions--------------")
+
+// **************************************************************************
+
+const calculateAge = (birthYear) => {
+    return 2018 - birthYear;
+}
+
+connerAge = calculateAge(1995);
+console.log(connerAge);
+
+//function expression
+const whatDoYouDo = function(job, firstName) {}
+
+//function declaration
+function whatDoYouDo2(job, firstName) {}
+
+// ES6
+const whatDoYouDo3 = (job, firstName) => {}
+
+// Pass in variables
+whatDoYouDo('coder', 'Conner')
+
+//function statements don't provide an output, expressions do.
+
+console.log("-------------Arrays--------------")
+
+// **************************************************************************
+
+// Make new array
+const names = ['Conner', 'Gregg', 'Preston', 'Erik', 'Mayson'];
+const years = new Array(1995, 1988, 1992, 1987, 2000);
+
+console.log(years)
+console.log(names[1])
+// Mutate array data
+names[7] = 'Mica'
+names[names.length] = 'John'
+console.log(names)
+
+// Different data types
+const gregg = ['Gregg', 'Donohoo', 1988, 'Sales', true];
+gregg.push('Gray');
+gregg.unshift('Mr.');
+console.log(gregg);
+gregg.pop();
+gregg.pop()
+gregg.shift();
+console.log(gregg)
+
+// Items not in array will come back as -1
+console.log(gregg.indexOf(1988));
+
+console.log("-------------Coding Challenge 3--------------")
+
+// **************************************************************************
+
+/*
+John and his family went on a holiday and went to 3 different restaurants.
+The bills were $124, $48 and $268.
+
+To tip the waiter a fair amount, John created a simple tip calculator (as a function).
+He likes to tip 20% of the bill when the bill is less than $50, 15% when the bill is between $50 and $200,
+and 10% if the bill is more than $200.
+
+In the end, John would like to have 2 arrays:
+1) Containing all three tips (one for each bill)
+2) Containing all three final paid amounts (bill + tip).
+
+(NOTE: To calculate 20% of a value, simply multiply it with 20/100 = 0.2)
+
+GOOD LUCK 😀
+*/
+
+const bills = new Array(124, 48, 268);
+
+const tipCalculator = (bill) => {
+    let tips = []
+    for(let i = 0; i < bill.length; i++) {
+        if (bill[i] < 50) {tips.push(bill[i] * .2)
+        } else if (bill[i] >= 50 && bill[i] < 200) {tips.push(bill[i] * .15)
+    } else {tips.push(bill[i] *.1)
+    }}
+    return tips
+}
+const tipTotals = tipCalculator(bills);
+console.log("Tip amounts", tipCalculator(bills))
+
+const combineTotals = [bills, tipTotals],
+grandTotals = combineTotals.reduce((prev, next) => next.map((b, i) => (prev[i] || 0) + b), [])
+console.log("Grand Totals:", grandTotals)
