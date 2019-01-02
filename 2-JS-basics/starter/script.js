@@ -341,3 +341,212 @@ console.log("Tip amounts", tipCalculator(bills))
 const combineTotals = [bills, tipTotals],
 grandTotals = combineTotals.reduce((prev, next) => next.map((b, i) => (prev[i] || 0) + b), [])
 console.log("Grand Totals:", grandTotals)
+
+console.log("-------------Objects and properties--------------")
+
+// **************************************************************************
+
+//Object literal, Key Value pairs
+const susan = {
+    firstName: 'Susan',
+    lastName: 'Smith',
+    birthYear: 1990,
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'model',
+    isMarried: false
+};
+console.log(susan)
+console.log(susan.firstName)
+console.log(susan['lastName'])
+const z = 'birthYear'
+console.log(susan[z])
+
+susan.job = 'designer'
+susan['isMarried'] = true
+console.log(susan)
+
+const jane = new Object()
+jane.name = 'Jane'
+jane.birthYear = 1969
+jane['isCool'] = false
+
+console.log("Jane:", jane)
+
+console.log("-------------Objects & Methods--------------")
+
+// **************************************************************************
+
+//Object can hold any type of data, including functions ie Methods.
+
+// jane.calcAge = (birthYear) => 2018 - birthYear;
+// jane.calcAge = () => 2018 - this.birthYear;
+// console.log(jane.calcAge(1990))
+// console.log(jane.calcAge())
+// console.log(jane)
+
+jane.calcAge = () => {this.age = 2018 - this.birthYear};
+console.log(jane.calcAge(), jane)
+
+console.log("-------------Coding Challenge 4--------------")
+
+// **************************************************************************
+
+/*
+Let's remember the first coding challenge where Mark and John compared their BMIs.
+Let's now implement the same functionality with objects and methods.
+1. For each of them, create an object with properties for their full name, mass, and height
+2. Then, add a method to each object to calculate the BMI.
+Save the BMI to the object and also return it from the method.
+3. In the end, log to the console who has the highest BMI,
+together with the full name and the respective BMI. Don't forget they might have the same BMI.
+
+Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and height in meter).
+
+GOOD LUCK 😀
+*/
+
+
+
+let phil = {
+    fullName: "Phil Cooter",
+    weight: 180,
+    height: 72,
+    calcBMI: function() {
+        this.bmi = (this.weight / (this.height * this.height)) * 705;
+        return this.bmi;
+    }
+};
+
+let george = {
+    fullName: "George Rickter",
+    weight: 210,
+    height: 74,
+    calcBMI: function() {
+        this.bmi = (this.weight / (this.height * this.height)) * 705;
+        return this.bmi;
+    }
+    // calcBMI: () => {
+    //     this.bmi = (this.weight / (this.height * this.height)) * 705;
+    // }
+};
+console.log(phil.calcBMI(), phil)
+console.log(george.calcBMI(), george)
+
+console.log("-------------Objects & Methods--------------")
+
+// **************************************************************************
+
+// Loops and iteration
+// Continue; continues through loop.  Break; ends at current iteration and exits loop.
+
+for (let i = 1; i < 10; i++) {
+    console.log(i)
+}
+
+for (let i = 0; i < gregg.length; i++) {
+    console.log("1", gregg[i])
+}
+
+let i = 0;
+while(i < gregg.length) {
+    console.log("2", gregg[i]);
+    i++;
+}
+
+// Loop backwards
+for (let i = gregg.length - 1; i >= 0; i--){
+    console.log("3", gregg[i])
+}
+
+console.log("-------------Coding Challenge 5--------------")
+
+// **************************************************************************
+
+/*
+Remember the tip calculator challenge? Let's create a more advanced version using everything we learned!
+
+This time, John and his family went to 5 different restaurants. The bills were $124, $48, $268,
+$180 and $42.
+John likes to tip 20% of the bill when the bill is less than $50, 15% when the bill is between
+$50 and $200, and 10% if the bill is more than $200.
+
+Implement a tip calculator using objects and loops:
+1. Create an object with an array for the bill values
+2. Add a method to calculate the tip
+3. This method should include a loop to iterate over all the paid bills and do the tip calculations
+4. As an output, create 1) a new array containing all tips, and 2) an array containing final paid amounts
+(bill + tip). HINT: Start with two empty arrays [] as properties and then fill them up in the loop.
+
+
+EXTRA AFTER FINISHING: Mark's family also went on a holiday, going to 4 different restaurants.
+The bills were $77, $375, $110, and $45.
+Mark likes to tip 20% of the bill when the bill is less than $100, 10% when the bill is between
+$100 and $300, and 25% if the bill is more than $300 (different than John).
+
+5. Implement the same functionality as before, this time using Mark's tipping rules
+6. Create a function (not a method) to calculate the average of a given array of tips.
+HINT: Loop over the array, and in each iteration store the current sum in a variable (starting from 0).
+After you have the sum of the array, divide it by the number of elements in it
+(that's how you calculate the average)
+7. Calculate the average tip for each family
+8. Log to the console which family paid the highest tips on average
+
+GOOD LUCK 😀
+*/
+
+const markBills = [77, 375, 110, 45]
+
+const mTipCalculator = (bill) => {
+    let mTips = []
+    for (let i = 0; i < bill.length; i++) {
+        if (bill[i] < 100) {
+            mTips.push(bill[i] * .20)
+        } else if (bill[i] <= 300) {
+            mTips.push(bill[i] * .10) 
+        } else {
+            mTips.push(bill[i] * .25)
+        }
+    }
+    return mTips
+}
+
+// const averager = (tips) => {
+//     let average = 0;
+//     for (let i = 0; i < tips.length; i ++) {
+//         average += tips[i]
+//     }
+//     return average / tips.length
+// }
+
+const averager = (tips) => {
+    return tips.reduce((prev, next) => prev + next) / tips.length;
+}
+
+const markTips = mTipCalculator(markBills);
+const markTipAverage = averager(markTips);
+console.log("Marks Average Tips", markTipAverage)
+
+const heldo = {
+    fullName: 'Heldo Scum',
+    bills: [124, 48, 268, 180, 42],
+    calcTips: function() {
+        this.tips = [];
+        this.finalValues = [];
+
+        for (let i = 0; i < this.bills.length; i++) {
+            let percentage;
+            let bill = this.bills[i]
+            if (bill < 50) {
+                percentage = .2;
+            } else if (bill >= 50 && bill < 200) {
+                percentage = .15;
+            } else {
+                percentage = .1;
+            }
+            this.tips[i] = bill * percentage;
+            this.finalValues[i] = bill + (bill * percentage);
+        }
+    }
+}
+heldo.calcTips();
+console.log(heldo)
