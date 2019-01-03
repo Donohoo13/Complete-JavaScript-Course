@@ -1,21 +1,17 @@
 ///////////////////////////////////////
 // Lecture: Hoisting
 
+// calculateAge(1995);
+// calculateAge = (year) => {
+//     console.log(2019 - year);
+// }
+// calculateAge() works before or after the function declaration is declared thanks to hoisting.
+//But this only works with declared function() and var, not const or let.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+retirement = (year) => {
+    console.log(65 - (2019 - year))
+}
+retirement(1995)
 
 ///////////////////////////////////////
 // Lecture: Scoping
