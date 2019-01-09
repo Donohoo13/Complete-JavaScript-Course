@@ -35,6 +35,7 @@ const init = () => {
 };
 
 init();
+console.log(toWin)
 
 // Reset round score and change active player.
 const nextPlayer = () => {
