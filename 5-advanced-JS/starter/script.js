@@ -103,5 +103,52 @@ console.log(arrayCalc(years, calcAge))
 /* ************************************************************************* */
 
 const interviewQuestion = (job) => {
-    if (job === 'designer')
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you please explain what UX design is?')
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log('What subject do you teach, ' + name + '?');
+        }
+    } else {
+        return function(name) {
+            console.log('Hello ' + name + ', what do you do?');
+        }
+    }
 }
+
+const teacherQuestion = interviewQuestion('teacher');
+const designerQuestion = interviewQuestion('designer');
+teacherQuestion('John')
+designerQuestion('John')
+interviewQuestion('janitor')('Phillip')
+
+// IIFE
+/* ************************************************************************* */
+
+// For data privacy
+
+// Closures
+/* ************************************************************************* */
+
+// Due to the scope chain and execution stack, applying variables one after another will work.
+const retirement = (retirementAge) => {
+    const a = ' years left until retirement.';
+    return function(yearOfBirth) {
+        const age = 2018 - yearOfBirth;
+        console.log((retirementAge - age) + a);
+    }
+}
+const retirementUS = retirement(69);
+retirementUS(1995);
+const retirementGermany = retirement(65);
+retirementGermany(1995);
+const retirementIceland = retirement(67);
+retirementIceland(1995);
+
+retirement(66)(1995);
+
+// Bind, Call & Apply
+/* ************************************************************************* */
+
